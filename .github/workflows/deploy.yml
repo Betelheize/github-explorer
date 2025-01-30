@@ -3,11 +3,18 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # or your default branch
+      - main
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,13 +26,16 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install -g @angular/cli
+          npm install
 
       - name: Build
         run: npm run build:prod
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/github-explorer/browser # Angular SSR output directory
-          branch: gh-pages 
+          folder: dist/github-explorer/browser
+          branch: gh-pages
+          clean: true 
