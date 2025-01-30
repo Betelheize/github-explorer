@@ -1,0 +1,13 @@
+.git
+.gitignore
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.editorconfig
+README.md
+dist
+coverage
+e2e
+*.md
+*.log 
