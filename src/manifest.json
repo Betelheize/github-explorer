@@ -5,8 +5,8 @@
   "background_color": "#0a0c10",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/github-explorer/",
-  "start_url": "/github-explorer/",
+  "scope": "/gulf-task-vano-gogaladze/",
+  "start_url": "/gulf-task-vano-gogaladze/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
